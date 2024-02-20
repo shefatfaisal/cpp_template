@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[
+vector<int>v[200001];
+vector<int> color(200001);
+
+bool cycle = 0;
+void dfs(int n) {
+    color[n] = 1;
+    for (int u : v[n]) {
+        if (color[u] == 0) {
+            dfs(u);
+        } else if (color[u] == 1) {
+            cycle = 1;
+        }
+    }
+    color[n] = 2;
+}
+
+// then run a dfs for every nodes from 1 to n
+// if color[i] == 0 then run dfs for this node
+// then if cycle is true then cycle exists otherwise not
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>cycle</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

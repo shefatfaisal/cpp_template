@@ -1,0 +1,25 @@
+<snippet>
+    <content><![CDATA[
+bool prime[N];
+vector<int>prim;
+void sieve() {
+    prime[1] = 1;
+    for(int i = 2; i * i <= N; i++) {
+        if(prime[i] == 0) {
+            for(int k = i * i; k <= N; k += i) {
+                prime[k] = 1;
+            }
+        }
+    }
+    for(int i = 1; i <= N; i++) {
+        if(prime[i] == 0) {
+            prim.push_back(i);
+        }
+    }
+}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>seive</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.c++</scope>
+</snippet>
