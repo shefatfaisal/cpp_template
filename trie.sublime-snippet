@@ -1,5 +1,6 @@
 <snippet>
 	<content><![CDATA[
+const int nmax = 1e5 + 10, alpha = 30;
 int current_node;
 int nextw[nmax][alpha], parent[nmax], wordcount[nmax], endcount[nmax];
 int makenode(int par) {
@@ -7,6 +8,7 @@ int makenode(int par) {
         current_node = 0;
     }
     parent[current_node] = par;
+    memset(nextw, -1, sizeof nextw);
     wordcount[current_node] = 0, endcount[current_node] = 0;
     
     return current_node++; // return the value current_node before increamenting.
@@ -21,7 +23,6 @@ int trieinsert(string s, int val) {
         }
         cur = nextw[cur][s[i] - 'a'];
         wordcount[cur]++;
-        // debug(), dbg(cur), dbg(s[i]), dbg(nextw[cur][s[i] - 'a']);
     }
     endcount[cur]++;
     return cur;
